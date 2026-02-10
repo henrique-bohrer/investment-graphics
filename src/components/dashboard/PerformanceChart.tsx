@@ -31,7 +31,7 @@ export const PerformanceChart = () => {
           <Tooltip
             contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc' }}
             itemStyle={{ color: '#10b981' }}
-            formatter={(value: any) => [`R$ ${Number(value).toLocaleString()}`, 'Valor']}
+            formatter={(value: number | undefined) => [`R$ ${Number(value ?? 0).toLocaleString()}`, 'Valor']}
             labelStyle={{ color: '#94a3b8' }}
           />
           <Area

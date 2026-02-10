@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 import { Calculator as CalculatorIcon, DollarSign, Calendar, Percent } from 'lucide-react';
+
+interface ChartData {
+  name: string;
+  invested: number;
+  amount: number;
+  interest: number;
+}
 
 const Calculator: React.FC = () => {
   const [initialAmount, setInitialAmount] = useState(1000);
   const [monthlyContribution, setMonthlyContribution] = useState(500);
   const [interestRate, setInterestRate] = useState(10);
   const [years, setYears] = useState(10);
-  const [data, setData] = useState<any[]>([]);
-  const [result, setResult] = useState({ totalInvested: 0, totalInterest: 0, totalAmount: 0 });
 
-  useEffect(() => {
-    calculateCompoundInterest();
-  }, [initialAmount, monthlyContribution, interestRate, years]);
-
-  const calculateCompoundInterest = () => {
+  const { data, result } = useMemo(() => {
     const monthlyRate = interestRate / 100 / 12;
     const months = years * 12;
     let currentAmount = initialAmount;
     let totalInvested = initialAmount;
-    const chartData = [];
+    const chartData: ChartData[] = [];
 
     // Add initial point
     chartData.push({
@@ -44,13 +45,15 @@ const Calculator: React.FC = () => {
       }
     }
 
-    setData(chartData);
-    setResult({
-      totalInvested,
-      totalInterest: currentAmount - totalInvested,
-      totalAmount: currentAmount
-    });
-  };
+    return {
+      data: chartData,
+      result: {
+        totalInvested,
+        totalInterest: currentAmount - totalInvested,
+        totalAmount: currentAmount
+      }
+    };
+  }, [initialAmount, monthlyContribution, interestRate, years]);
 
   return (
     <div className="space-y-6">
@@ -166,7 +169,7 @@ const Calculator: React.FC = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} vertical={false} />
               <Tooltip
                 contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc' }}
-                formatter={(value: any) => [`R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`, '']}
+                formatter={(value: number | undefined) => [`R$ ${(value ?? 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`, '']}
                 labelStyle={{ color: '#94a3b8' }}
               />
               <Legend />
