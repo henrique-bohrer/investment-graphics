@@ -1,4 +1,4 @@
-import { LayoutDashboard, TrendingUp, Building2, Calculator } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, Building2, Calculator, LineChart } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
@@ -7,6 +7,7 @@ const navItems = [
   { name: 'Ações', icon: TrendingUp, path: '/acoes' },
   { name: 'FIIs', icon: Building2, path: '/fiis' },
   { name: 'Calculadora', icon: Calculator, path: '/calculadora' },
+  { name: 'Simulador', icon: LineChart, path: '/simulador' },
 ];
 
 export const Sidebar = () => {

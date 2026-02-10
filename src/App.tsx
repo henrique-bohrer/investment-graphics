@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Stocks from './pages/Stocks';
 import FIIs from './pages/FIIs';
 import Calculator from './pages/Calculator';
+import Simulator from './pages/Simulator';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="acoes" element={<Stocks />} />
           <Route path="fiis" element={<FIIs />} />
           <Route path="calculadora" element={<Calculator />} />
+          <Route path="simulador" element={<Simulator />} />
         </Route>
       </Routes>
     </BrowserRouter>
