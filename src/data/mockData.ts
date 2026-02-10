@@ -1,4 +1,4 @@
-import type { Asset, ChartDataPoint, MarketIndex } from '../types';
+import type { Asset, ChartDataPoint, MarketIndex, PortfolioData, Transaction } from '../types';
 
 export const marketIndices: MarketIndex[] = [
   { name: 'IBOVESPA', value: 128500.45, change: 0.85 },
@@ -35,4 +35,19 @@ export const chartData: ChartDataPoint[] = [
   { name: 'Mai', value: 1890 },
   { name: 'Jun', value: 2390 },
   { name: 'Jul', value: 3490 },
+];
+
+// Dados Novos para os Componentes
+export const portfolioDistribution: PortfolioData[] = [
+  { name: 'Ações', value: 45, color: '#10b981' }, // Emerald
+  { name: 'FIIs', value: 30, color: '#3b82f6' }, // Blue
+  { name: 'Renda Fixa', value: 15, color: '#f59e0b' }, // Amber
+  { name: 'Caixa', value: 10, color: '#6366f1' }, // Indigo
+];
+
+export const recentTransactions: Transaction[] = [
+  { id: '1', type: 'buy', asset: 'VALE3', amount: 3122.50, quantity: 50, date: 'Hoje', time: '14:30' },
+  { id: '2', type: 'dividend', asset: 'HGLG11', amount: 185.50, date: 'Ontem', time: '10:00' },
+  { id: '3', type: 'sell', asset: 'PETR4', amount: 1945.00, quantity: 50, date: '10/02', time: '11:15' },
+  { id: '4', type: 'buy', asset: 'WEGE3', amount: 4210.00, quantity: 100, date: '08/02', time: '16:45' },
 ];

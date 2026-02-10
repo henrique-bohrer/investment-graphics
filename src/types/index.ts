@@ -3,11 +3,11 @@ export interface Asset {
   ticker: string;
   name: string;
   price: number;
-  change: number; // Percentage change
-  changeValue: number; // Absolute value change
+  change: number;
+  changeValue: number;
   sector?: string;
-  dy?: number; // Dividend Yield
-  p_vp?: number; // Price / Book Value
+  dy?: number;
+  p_vp?: number;
   liquidity?: string;
   type: 'stock' | 'fii' | 'index';
 }
@@ -19,6 +19,23 @@ export interface MarketIndex {
 }
 
 export interface ChartDataPoint {
-  name: string; // date or time
+  name: string;
   value: number;
+}
+
+// Novos Tipos
+export interface PortfolioData {
+  name: string;
+  value: number;
+  color: string;
+}
+
+export interface Transaction {
+  id: string;
+  type: 'buy' | 'sell' | 'dividend';
+  asset: string;
+  amount: number;
+  quantity?: number;
+  date: string;
+  time: string;
 }
