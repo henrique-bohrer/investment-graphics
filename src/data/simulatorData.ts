@@ -1,7 +1,15 @@
 // Mock data for Trading Simulator (Candlestick chart)
 // Format: { time: 'YYYY-MM-DD', open: number, high: number, low: number, close: number }
 
-export const candlestickData = [
+export interface Candle {
+  time: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}
+
+export const candlestickData: Candle[] = [
   { time: '2023-10-01', open: 150.00, high: 155.00, low: 148.00, close: 153.50 },
   { time: '2023-10-02', open: 153.50, high: 158.00, low: 152.00, close: 157.00 },
   { time: '2023-10-03', open: 157.00, high: 159.50, low: 155.00, close: 156.00 },
